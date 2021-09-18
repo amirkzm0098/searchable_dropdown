@@ -618,7 +618,7 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
                   child: widget.clearButtonBuilder!(context),
                 )
               : IconButton(
-                  icon: widget.clearButton ?? const Icon(Icons.clear, size: 24, color: Color(0xFFB8C5D3)),
+                  icon: widget.clearButton ?? const Icon(Icons.clear, size: 24, color: Color(0xFFfafbff)),
                   onPressed: clearButtonPressed,
                   splashRadius: widget.clearButtonSplashRadius ?? null,
                 ),
@@ -629,7 +629,7 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
               )
             : IconButton(
                 icon: widget.dropDownButton ??
-                    const Icon(Icons.arrow_drop_down, size: 24, color: Color(0xFFB8C5D3)),
+                    const Icon(Icons.arrow_drop_down, size: 24, color: Color(0xFFfafbff)),
                 onPressed: dropdownButtonPressed,
                 splashRadius: widget.dropdownButtonSplashRadius ?? null,
               ),

@@ -579,7 +579,7 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
                 contentPadding: EdgeInsets.all(8.0),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                  borderSide: BorderSide(color: Colors.grey, width: 1),
+                  borderSide: BorderSide(color: Color(0xFFB8C5D3), width: 1),
                 )))
         .applyDefaults(Theme.of(state.context).inputDecorationTheme)
         .copyWith(
@@ -618,7 +618,7 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
                   child: widget.clearButtonBuilder!(context),
                 )
               : IconButton(
-                  icon: widget.clearButton ?? const Icon(Icons.clear, size: 24, color: Colors.grey),
+                  icon: widget.clearButton ?? const Icon(Icons.clear, size: 24, color: Color(0xFFB8C5D3)),
                   onPressed: clearButtonPressed,
                   splashRadius: widget.clearButtonSplashRadius ?? null,
                 ),
@@ -629,7 +629,7 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
               )
             : IconButton(
                 icon: widget.dropDownButton ??
-                    const Icon(Icons.arrow_drop_down, size: 24, color: Colors.grey),
+                    const Icon(Icons.arrow_drop_down, size: 24, color: Color(0xFFB8C5D3)),
                 onPressed: dropdownButtonPressed,
                 splashRadius: widget.dropdownButtonSplashRadius ?? null,
               ),

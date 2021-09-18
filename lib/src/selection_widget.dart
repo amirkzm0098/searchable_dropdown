@@ -188,7 +188,7 @@ class _SelectionWidgetState<T> extends State<SelectionWidget<T>> {
                       else
                         return Center(
                           child: Text(
-                              widget.helperText == null
+                              widget.helperText != null
                                   ? widget.helperText!
                                   : "اطلاعاتی یافت نشد"
                           ),

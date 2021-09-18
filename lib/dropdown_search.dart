@@ -57,6 +57,8 @@ class DropdownSearch<T> extends StatefulWidget {
   ///DropDownSearch hint
   final String? hint;
 
+  final String? helperText;
+
   ///show/hide the search box
   final bool showSearchBox;
 
@@ -260,6 +262,7 @@ class DropdownSearch<T> extends StatefulWidget {
     this.mode = Mode.DIALOG,
     this.label,
     this.hint,
+    this.helperText,
     this.isFilteredOnline = false,
     this.popupTitle,
     this.items,
@@ -328,6 +331,7 @@ class DropdownSearch<T> extends StatefulWidget {
     this.mode = Mode.DIALOG,
     this.label,
     this.hint,
+    this.helperText,
     this.isFilteredOnline = false,
     this.popupTitle,
     this.items,
@@ -765,6 +769,7 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
       filterFn: widget.filterFn,
       items: widget.items,
       onFind: widget.onFind,
+      helperText: widget.helperText,
       showSearchBox: widget.showSearchBox,
       itemBuilder: widget.popupItemBuilder,
       selectedValues: getSelectedItems,

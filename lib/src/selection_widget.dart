@@ -20,7 +20,7 @@ class SelectionWidget<T> extends StatefulWidget {
   final DropdownSearchItemAsString<T>? itemAsString;
   final DropdownSearchFilterFn<T>? filterFn;
   final String? hintText;
-
+  final String? helperText;
   final double? maxHeight;
   final double? dialogMaxWidth;
   final Widget? popupTitle;
@@ -87,6 +87,7 @@ class SelectionWidget<T> extends StatefulWidget {
     this.onFind,
     this.itemBuilder,
     this.hintText,
+    this.helperText,
     this.itemAsString,
     this.filterFn,
     this.showSelectedItems = false,
@@ -185,8 +186,12 @@ class _SelectionWidgetState<T> extends State<SelectionWidget<T>> {
                           widget.searchFieldProps?.controller?.text,
                         );
                       else
-                        return const Center(
-                          child: const Text("No data found"),
+                        return Center(
+                          child: Text(
+                              widget.helperText == null
+                                  ? "${widget.helperText}"
+                                  : "اطلاعاتی یافت نشد"
+                          ),
                         );
                     }
                     return MediaQuery.removePadding(

@@ -438,6 +438,12 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
     }
     super.didUpdateWidget(oldWidget);
   }
+
+  @override
+  void dispose() {
+    _selectedItemsNotifier.value.clear();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder<List<T?>>(

@@ -253,6 +253,9 @@ class DropdownSearch<T> extends StatefulWidget {
   /// elevation for popup items
   final double popupElevation;
 
+
+  final bool? clearSelectedItem;
+
   DropdownSearch({
     Key? key,
     this.onSaved,
@@ -310,6 +313,7 @@ class DropdownSearch<T> extends StatefulWidget {
     this.dropdownSearchTextAlign,
     this.dropdownSearchTextAlignVertical,
     this.popupElevation = 8,
+    this.clearSelectedItem,
   })  : assert(!showSelectedItems || T == String || compareFn != null),
         this.searchFieldProps = searchFieldProps ?? TextFieldProps(),
         this.isMultiSelectionMode = false,
@@ -386,6 +390,7 @@ class DropdownSearch<T> extends StatefulWidget {
     this.popupSelectionWidget,
     this.popupValidationMultiSelectionWidget,
     this.popupElevation = 8,
+    this.clearSelectedItem,
   })  : assert(!showSelectedItems || T == String || compareFn != null),
         this.searchFieldProps = searchFieldProps ?? TextFieldProps(),
         this.onChangedMultiSelection = onChange,
@@ -416,6 +421,9 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
     _selectedItemsNotifier.value = isMultiSelectionMode
         ? List.from(widget.selectedItems)
         : _itemToList(widget.selectedItem);
+    if(widget.clearSelectedItem == true){
+      clearSelectedItems();
+    }
   }
 
   @override
@@ -430,9 +438,6 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
 
     if (!listEquals(oldSelectedItems, newSelectedItems)) {
       _selectedItemsNotifier.value = List.from(newSelectedItems);
-    }
-    if(oldWidget.items != widget.items){
-      clearSelectedItems();
     }
     super.didUpdateWidget(oldWidget);
   }

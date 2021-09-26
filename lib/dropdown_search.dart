@@ -432,7 +432,7 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
       _selectedItemsNotifier.value = List.from(newSelectedItems);
     }
     if(oldWidget.items != widget.items){
-        clear();
+      clearSelectedItems();
     }
     super.didUpdateWidget(oldWidget);
   }
@@ -895,6 +895,8 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
 
   ///get selected values programmatically
   List<T> get getSelectedItems => _selectedItemsNotifier.value;
+
+  void clearSelectedItems() => _selectedItemsNotifier.value.clear();
 
   ///check if the dropdownSearch is focused
   bool get isFocused => _isFocused.value;

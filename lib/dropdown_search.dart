@@ -432,9 +432,7 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
       _selectedItemsNotifier.value = List.from(newSelectedItems);
     }
     if(oldWidget.items != widget.items){
-      setState(() {
         clear();
-      });
     }
     super.didUpdateWidget(oldWidget);
   }

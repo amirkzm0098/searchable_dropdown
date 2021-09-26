@@ -439,7 +439,17 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
     if (!listEquals(oldSelectedItems, newSelectedItems)) {
       _selectedItemsNotifier.value = List.from(newSelectedItems);
     }
+    if(widget.clearSelectedItem == true){
+      clearSelectedItems();
+    }
     super.didUpdateWidget(oldWidget);
+  }
+  @override
+  void dispose() {
+    if(widget.clearSelectedItem == true){
+      clearSelectedItems();
+    }
+    super.dispose();
   }
 
   @override

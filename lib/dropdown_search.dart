@@ -420,6 +420,7 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
 
   @override
   void didUpdateWidget(DropdownSearch<T> oldWidget) {
+    debugPrint("didUpdateWidget");
     List<T> oldSelectedItems = isMultiSelectionMode
         ? oldWidget.selectedItems
         : _itemToList(oldWidget.selectedItem);
@@ -432,6 +433,7 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
       _selectedItemsNotifier.value = List.from(newSelectedItems);
     }
     if (!listEquals(oldSelectedItems, newSelectedItems) && widget.selectedItem== null){
+      debugPrint("check condition");
       _selectedItemsNotifier.value.clear();
     }
 

@@ -439,10 +439,10 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
     if (!listEquals(oldSelectedItems, newSelectedItems)) {
       _selectedItemsNotifier.value = List.from(newSelectedItems);
     }
-    // if (!listEquals(oldSelectedItems, newSelectedItems) && widget.selectedItem == null){
-    //   debugPrint("check condition");
-    //   _selectedItemsNotifier.value.clear();
-    // }
+    if (!listEquals(oldSelectedItems, newSelectedItems) && widget.selectedItem == null){
+      debugPrint("check condition");
+      _selectedItemsNotifier.value.clear();
+    }
     if((widget.dateFrom != null && oldWidget.dateFrom != null) || (widget.dateTo != null && oldWidget.dateTo != null)){
       if((widget.dateFrom != oldWidget.dateFrom) || (widget.dateTo != oldWidget.dateTo)){
         debugPrint("check condition");

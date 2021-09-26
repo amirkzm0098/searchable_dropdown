@@ -433,7 +433,7 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
     }
     if(oldWidget.items != widget.items){
       setState(() {
-        _selectedItemAsString(null);
+        clear();
       });
     }
     super.didUpdateWidget(oldWidget);

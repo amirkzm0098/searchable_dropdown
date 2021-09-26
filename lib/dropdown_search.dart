@@ -253,6 +253,9 @@ class DropdownSearch<T> extends StatefulWidget {
   /// elevation for popup items
   final double popupElevation;
 
+  final String? dateFrom;
+  final String? dateTo;
+
   DropdownSearch({
     Key? key,
     this.onSaved,
@@ -310,6 +313,8 @@ class DropdownSearch<T> extends StatefulWidget {
     this.dropdownSearchTextAlign,
     this.dropdownSearchTextAlignVertical,
     this.popupElevation = 8,
+    this.dateFrom,
+    this.dateTo
   })  : assert(!showSelectedItems || T == String || compareFn != null),
         this.searchFieldProps = searchFieldProps ?? TextFieldProps(),
         this.isMultiSelectionMode = false,
@@ -386,6 +391,8 @@ class DropdownSearch<T> extends StatefulWidget {
     this.popupSelectionWidget,
     this.popupValidationMultiSelectionWidget,
     this.popupElevation = 8,
+    this.dateFrom,
+    this.dateTo
   })  : assert(!showSelectedItems || T == String || compareFn != null),
         this.searchFieldProps = searchFieldProps ?? TextFieldProps(),
         this.onChangedMultiSelection = onChange,
@@ -432,7 +439,11 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
     if (!listEquals(oldSelectedItems, newSelectedItems)) {
       _selectedItemsNotifier.value = List.from(newSelectedItems);
     }
-    if ((!listEquals(oldSelectedItems, newSelectedItems) && widget.selectedItem == null) || (widget.selectedItem == null && oldWidget.selectedItem == null)){
+    // if (!listEquals(oldSelectedItems, newSelectedItems) && widget.selectedItem == null){
+    //   debugPrint("check condition");
+    //   _selectedItemsNotifier.value.clear();
+    // }
+    if((widget.dateFrom != oldWidget.dateFrom) || (widget.dateTo != oldWidget.dateTo)){
       debugPrint("check condition");
       _selectedItemsNotifier.value.clear();
     }

@@ -443,11 +443,12 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
     //   debugPrint("check condition");
     //   _selectedItemsNotifier.value.clear();
     // }
-    if((widget.dateFrom != oldWidget.dateFrom) || (widget.dateTo != oldWidget.dateTo)){
-      debugPrint("check condition");
-      _selectedItemsNotifier.value.clear();
+    if((widget.dateFrom != null && oldWidget.dateFrom != null) || (widget.dateTo != null && oldWidget.dateTo != null)){
+      if((widget.dateFrom != oldWidget.dateFrom) || (widget.dateTo != oldWidget.dateTo)){
+        debugPrint("check condition");
+        _selectedItemsNotifier.value.clear();
+      }
     }
-
     super.didUpdateWidget(oldWidget);
   }
   @override

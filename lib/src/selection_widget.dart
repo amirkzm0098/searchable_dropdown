@@ -252,12 +252,16 @@ class _SelectionWidgetState<T> extends State<SelectionWidget<T>> {
       crossAxisAlignment: CrossAxisAlignment.end,
       mainAxisSize: MainAxisSize.min,
       children: [
-        Divider(),
+        Divider(color: Color(0xFFB8C5D3), thickness: 2,),
         Padding(
           padding: const EdgeInsets.only(bottom: 8, left: 8, right: 8),
           child: ElevatedButton(
             onPressed: onValidate,
-            child: Text("OK"),
+            child: Text("تایید"),
+            style: ElevatedButton.styleFrom(
+              textStyle: const TextStyle(color: Color(0xFFfafbff)),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+            ),
           ),
         )
       ],

@@ -261,7 +261,7 @@ class _SelectionWidgetState<T> extends State<SelectionWidget<T>> {
           padding: const EdgeInsets.only(bottom: 8, left: 8, right: 8),
           child: ElevatedButton(
             onPressed: onValidate,
-            child: Text("تایید", style: TextStyle(color: Color(0xFF253649), fontWeight: FontWeight.bold)),
+            child: Text("تایید", style: TextStyle(color: Color(0xFF253649), fontWeight: FontWeight.bold, fontSize: 16.0)),
             style: ElevatedButton.styleFrom(
               textStyle: const TextStyle(color: Color(0xFF253649)),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),

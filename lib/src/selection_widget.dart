@@ -263,7 +263,7 @@ class _SelectionWidgetState<T> extends State<SelectionWidget<T>> {
             onPressed: onValidate,
             child: Text("تایید", style: TextStyle(color: Color(0xFF253649), fontWeight: FontWeight.bold, fontSize: 16.0)),
             style: ElevatedButton.styleFrom(
-              textStyle: const TextStyle(color: Color(0xFF253649)),
+              textStyle: const TextStyle(color: Color(0xFF253649), fontWeight: FontWeight.bold, fontSize: 16.0),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
             ),
           ),

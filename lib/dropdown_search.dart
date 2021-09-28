@@ -431,19 +431,20 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
     if (!listEquals(oldSelectedItems, newSelectedItems)) {
       _selectedItemsNotifier.value = List.from(newSelectedItems);
     }
-    if (!listEquals(oldSelectedItems, newSelectedItems) && widget.selectedItem == null){
-      _selectedItemsNotifier.value.clear();
-    }
+    // if (!listEquals(oldSelectedItems, newSelectedItems) && widget.selectedItem == null){
+    //   _selectedItemsNotifier.value.clear();
+    // }
     super.didUpdateWidget(oldWidget);
   }
 
-  @override
-  void dispose() {
-    print("Dispose");
-    _selectedItemsNotifier.value.clear();
-    super.dispose();
-    _selectedItemsNotifier.value.clear();
-  }
+  // @override
+  // void dispose() {
+  //   print("Dispose");
+  //   _selectedItemsNotifier.value.clear();
+  //   super.dispose();
+  //   _selectedItemsNotifier.value.clear();
+  // }
+
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder<List<T?>>(

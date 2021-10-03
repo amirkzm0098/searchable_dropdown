@@ -161,76 +161,79 @@ class _SelectionWidgetState<T> extends State<SelectionWidget<T>> {
     double maxHeight = deviceSize.height * (isTablet ? .8 : .6);
     double maxWidth = deviceSize.width * (isTablet ? .7 : .9);
 
-    return Container(
-      width: widget.dialogMaxWidth ?? maxWidth,
-      constraints: BoxConstraints(maxHeight: widget.maxHeight ?? maxHeight),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          _searchField(),
-          _favoriteItemsWidget(),
-          Expanded(
-            child: Stack(
-              children: <Widget>[
-                StreamBuilder<List<T>>(
-                  stream: _itemsStream.stream,
-                  builder: (context, snapshot) {
-                    if (snapshot.hasError) {
-                      return _errorWidget(snapshot.error);
-                    } else if (!snapshot.hasData) {
-                      return _loadingWidget();
-                    } else if (snapshot.data!.isEmpty) {
-                      if (widget.emptyBuilder != null)
-                        return widget.emptyBuilder!(
-                          context,
-                          widget.searchFieldProps?.controller?.text,
-                        );
-                      else
-                        return Center(
-                          child: Text(
-                              widget.helperText != null
-                                  ? widget.helperText!
-                                  : "اطلاعاتی یافت نشد"
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Container(
+        width: widget.dialogMaxWidth ?? maxWidth,
+        constraints: BoxConstraints(maxHeight: widget.maxHeight ?? maxHeight),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            _searchField(),
+            _favoriteItemsWidget(),
+            Expanded(
+              child: Stack(
+                children: <Widget>[
+                  StreamBuilder<List<T>>(
+                    stream: _itemsStream.stream,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasError) {
+                        return _errorWidget(snapshot.error);
+                      } else if (!snapshot.hasData) {
+                        return _loadingWidget();
+                      } else if (snapshot.data!.isEmpty) {
+                        if (widget.emptyBuilder != null)
+                          return widget.emptyBuilder!(
+                            context,
+                            widget.searchFieldProps?.controller?.text,
+                          );
+                        else
+                          return Center(
+                            child: Text(
+                                widget.helperText != null
+                                    ? widget.helperText!
+                                    : "اطلاعاتی یافت نشد"
+                            ),
+                          );
+                      }
+                      return MediaQuery.removePadding(
+                        removeBottom: true,
+                        removeTop: true,
+                        context: context,
+                        child: Scrollbar(
+                          controller: widget.scrollbarProps?.controller,
+                          isAlwaysShown: widget.scrollbarProps?.isAlwaysShown,
+                          showTrackOnHover:
+                              widget.scrollbarProps?.showTrackOnHover,
+                          hoverThickness: widget.scrollbarProps?.hoverThickness,
+                          thickness: widget.scrollbarProps?.thickness,
+                          radius: widget.scrollbarProps?.radius,
+                          notificationPredicate:
+                              widget.scrollbarProps?.notificationPredicate,
+                          interactive: widget.scrollbarProps?.interactive,
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            padding: EdgeInsets.symmetric(vertical: 0),
+                            itemCount: snapshot.data!.length,
+                            itemBuilder: (context, index) {
+                              var item = snapshot.data![index];
+                              return widget.isMultiSelectionMode
+                                  ? _itemWidgetMultiSelection(item)
+                                  : _itemWidgetSingleSelection(item);
+                            },
                           ),
-                        );
-                    }
-                    return MediaQuery.removePadding(
-                      removeBottom: true,
-                      removeTop: true,
-                      context: context,
-                      child: Scrollbar(
-                        controller: widget.scrollbarProps?.controller,
-                        isAlwaysShown: widget.scrollbarProps?.isAlwaysShown,
-                        showTrackOnHover:
-                            widget.scrollbarProps?.showTrackOnHover,
-                        hoverThickness: widget.scrollbarProps?.hoverThickness,
-                        thickness: widget.scrollbarProps?.thickness,
-                        radius: widget.scrollbarProps?.radius,
-                        notificationPredicate:
-                            widget.scrollbarProps?.notificationPredicate,
-                        interactive: widget.scrollbarProps?.interactive,
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          padding: EdgeInsets.symmetric(vertical: 0),
-                          itemCount: snapshot.data!.length,
-                          itemBuilder: (context, index) {
-                            var item = snapshot.data![index];
-                            return widget.isMultiSelectionMode
-                                ? _itemWidgetMultiSelection(item)
-                                : _itemWidgetSingleSelection(item);
-                          },
                         ),
-                      ),
-                    );
-                  },
-                ),
-                _loadingWidget()
-              ],
+                      );
+                    },
+                  ),
+                  _loadingWidget()
+                ],
+              ),
             ),
-          ),
-          _multiSelectionValidation(),
-        ],
+            _multiSelectionValidation(),
+          ],
+        ),
       ),
     );
   }

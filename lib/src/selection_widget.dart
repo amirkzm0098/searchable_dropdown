@@ -305,6 +305,8 @@ class _SelectionWidgetState<T> extends State<SelectionWidget<T>> {
         padding: EdgeInsets.all(8),
         child: Text(
           error?.toString() ?? 'Error',
+          textDirection: TextDirection.rtl,
+          textAlign: TextAlign.right,
         ),
       );
   }
@@ -418,15 +420,12 @@ class _SelectionWidgetState<T> extends State<SelectionWidget<T>> {
     return (widget.itemBuilder != null)
         ? InkWell(
             // ignore pointers in itemBuilder
-            child: Directionality(
-              textDirection: TextDirection.rtl,
-              child: IgnorePointer(
-                ignoring: true,
-                child: widget.itemBuilder!(
-                  context,
-                  item,
-                  !widget.showSelectedItems ? false : _isSelectedItem(item),
-                ),
+            child: IgnorePointer(
+              ignoring: true,
+              child: widget.itemBuilder!(
+                context,
+                item,
+                !widget.showSelectedItems ? false : _isSelectedItem(item),
               ),
             ),
             onTap: _isDisabled(item) ? null : () => _handleSelectedItem(item),

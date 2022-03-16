@@ -59,6 +59,8 @@ class DropdownSearch<T> extends StatefulWidget {
 
   final String? helperText;
 
+  final TextStyle? helperTextStyle;
+
   ///show/hide the search box
   final bool showSearchBox;
 
@@ -263,6 +265,7 @@ class DropdownSearch<T> extends StatefulWidget {
     this.label,
     this.hint,
     this.helperText,
+    this.helperTextStyle,
     this.isFilteredOnline = false,
     this.popupTitle,
     this.items,
@@ -332,6 +335,7 @@ class DropdownSearch<T> extends StatefulWidget {
     this.label,
     this.hint,
     this.helperText,
+    this.helperTextStyle,
     this.isFilteredOnline = false,
     this.popupTitle,
     this.items,
@@ -629,7 +633,9 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
                   child: widget.clearButtonBuilder!(context),
                 )
               : IconButton(
-                  icon: widget.clearButton ?? const Icon(Icons.clear, size: 24, color: Color(0xFFfafbff)),
+                  icon: widget.clearButton ??
+                      const Icon(Icons.clear,
+                          size: 24, color: Color(0xFFfafbff)),
                   onPressed: clearButtonPressed,
                   splashRadius: widget.clearButtonSplashRadius ?? null,
                 ),
@@ -640,7 +646,8 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
               )
             : IconButton(
                 icon: widget.dropDownButton ??
-                    const Icon(Icons.arrow_drop_down, size: 24, color: Color(0xFFfafbff)),
+                    const Icon(Icons.arrow_drop_down,
+                        size: 24, color: Color(0xFFfafbff)),
                 onPressed: dropdownButtonPressed,
                 splashRadius: widget.dropdownButtonSplashRadius ?? null,
               ),
@@ -781,6 +788,7 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
       items: widget.items,
       onFind: widget.onFind,
       helperText: widget.helperText,
+      helperTextStyle: widget.helperTextStyle,
       showSearchBox: widget.showSearchBox,
       itemBuilder: widget.popupItemBuilder,
       selectedValues: getSelectedItems,

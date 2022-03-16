@@ -22,6 +22,7 @@ class SelectionWidget<T> extends StatefulWidget {
   final DropdownSearchFilterFn<T>? filterFn;
   final String? hintText;
   final String? helperText;
+  final TextStyle? helperTextStyle;
   final double? maxHeight;
   final double? dialogMaxWidth;
   final Widget? popupTitle;
@@ -89,6 +90,7 @@ class SelectionWidget<T> extends StatefulWidget {
     this.itemBuilder,
     this.hintText,
     this.helperText,
+    this.helperTextStyle,
     this.itemAsString,
     this.filterFn,
     this.showSelectedItems = false,
@@ -191,9 +193,11 @@ class _SelectionWidgetState<T> extends State<SelectionWidget<T>> {
                         else
                           return Center(
                             child: Text(
-                                widget.helperText != null
-                                    ? widget.helperText!
-                                    : "اطلاعاتی یافت نشد"
+                              widget.helperText != null
+                                  ? widget.helperText!
+                                  : "اطلاعاتی یافت نشد",
+                              style: widget.helperTextStyle ??
+                                  TextStyle(color: Colors.black),
                             ),
                           );
                       }
@@ -258,16 +262,27 @@ class _SelectionWidgetState<T> extends State<SelectionWidget<T>> {
       children: [
         Padding(
           padding: const EdgeInsets.only(left: 8, right: 8),
-          child: Divider(color: Color(0xFFB8C5D3), thickness: 0.5,),
+          child: Divider(
+            color: Color(0xFFB8C5D3),
+            thickness: 0.5,
+          ),
         ),
         Padding(
           padding: const EdgeInsets.only(bottom: 8, left: 8, right: 8),
           child: ElevatedButton(
             onPressed: onValidate,
-            child: Text("تایید", style: TextStyle(color: Color(0xFF253649), fontWeight: FontWeight.bold, fontSize: 16.0)),
+            child: Text("تایید",
+                style: TextStyle(
+                    color: Color(0xFF253649),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16.0)),
             style: ElevatedButton.styleFrom(
-              textStyle: const TextStyle(color: Color(0xFF253649), fontWeight: FontWeight.bold, fontSize: 16.0),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+              textStyle: const TextStyle(
+                  color: Color(0xFF253649),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16.0),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0)),
             ),
           ),
         )

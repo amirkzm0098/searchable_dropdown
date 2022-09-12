@@ -129,6 +129,8 @@ class DropdownSearch<T> extends StatefulWidget {
   ///dropdownSearch input decoration
   final InputDecoration? dropdownSearchDecoration;
 
+  final BorderRadius dropdownSearchSplashRadius;
+
   /// style on which to base the label
   final TextStyle? dropdownSearchBaseStyle;
 
@@ -312,6 +314,7 @@ class DropdownSearch<T> extends StatefulWidget {
     this.dropdownSearchTextAlign,
     this.dropdownSearchTextAlignVertical,
     this.popupElevation = 8,
+    this.dropdownSearchSplashRadius = BorderRadius.zero,
   })  : assert(!showSelectedItems || T == String || compareFn != null),
         this.searchFieldProps = searchFieldProps ?? TextFieldProps(),
         this.isMultiSelectionMode = false,
@@ -389,6 +392,7 @@ class DropdownSearch<T> extends StatefulWidget {
     this.popupSelectionWidget,
     this.popupValidationMultiSelectionWidget,
     this.popupElevation = 8,
+    this.dropdownSearchSplashRadius = BorderRadius.zero,
   })  : assert(!showSelectedItems || T == String || compareFn != null),
         this.searchFieldProps = searchFieldProps ?? TextFieldProps(),
         this.onChangedMultiSelection = onChange,
@@ -458,6 +462,7 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
           child: InkWell(
             onTap: () => _selectSearchMode(),
             child: _formField(),
+            borderRadius: widget.dropdownSearchSplashRadius,
           ),
         );
       },

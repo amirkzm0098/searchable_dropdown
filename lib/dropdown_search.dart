@@ -4,7 +4,6 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 import 'src/modal_dialog.dart';
 import 'src/popupMenu.dart';
@@ -64,7 +63,7 @@ class DropdownSearch<T> extends StatefulWidget {
   ///show/hide the search box
   final bool showSearchBox;
 
-  ///true if the filter on items is applied onlie (via API)
+  ///true if the filter on items is applied online (via API)
   final bool isFilteredOnline;
 
   ///show/hide clear selected item
@@ -532,7 +531,7 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
       initialValue: widget.selectedItem,
       builder: (FormFieldState<T> state) {
         if (state.value != getSelectedItem) {
-          WidgetsBinding.instance!.addPostFrameCallback((_) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
             state.didChange(getSelectedItem);
           });
         }
@@ -564,7 +563,7 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
       initialValue: widget.selectedItems,
       builder: (FormFieldState<List<T>> state) {
         if (state.value != getSelectedItems) {
-          WidgetsBinding.instance!.addPostFrameCallback((_) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
             state.didChange(getSelectedItems);
           });
         }

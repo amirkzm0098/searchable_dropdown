@@ -129,6 +129,7 @@ class DropdownSearch<T> extends StatefulWidget {
   ///dropdownSearch input decoration
   final InputDecoration? dropdownSearchDecoration;
 
+  /// dropdown search splash effect border radius
   final BorderRadius dropdownSearchSplashRadius;
 
   /// style on which to base the label

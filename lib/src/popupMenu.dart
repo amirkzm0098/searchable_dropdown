@@ -208,6 +208,7 @@ class PopupMenuItemState<T, W extends CustomPopupMenuItem<T>> extends State<W> {
       onTap: null,
       canRequestFocus: false,
       child: item,
+      borderRadius: BorderRadius.circular(8),
     );
   }
 }
